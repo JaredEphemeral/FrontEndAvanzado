@@ -1,5 +1,7 @@
 import Header from "./components/Header";
 import Tareas from "./components/Tareas";
+import AddTarea from "./components/AddTarea";
+
 import {useState} from 'react';
 
 function App() {
@@ -36,9 +38,12 @@ function App() {
     setTareas( tareas.map( (tarea) => tarea.id === id ? { ...tarea, terminada:!tarea.terminada} : tarea  ) )
   }
 
+  //Agregar una tarea
+
   return (
     <div className="container">
       <Header />
+      <AddTarea />
      {tareas.length > 0 ? <Tareas tareas={tareas} onDelete ={borrarTarea} onToggle = {toggleTarea} /> : 'No hay tareas para mostrar'}
     </div>
   )
