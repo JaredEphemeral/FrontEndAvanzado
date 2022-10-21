@@ -1,19 +1,11 @@
 import Boton from "./Boton"
 
-const Header = ({titulo, fecha}) => {
-
-  const agregar = () => {
-      console.log('agregar')
-  }
-
-  const borrar = () => {
-      console.log('borrar')
-  }
+const Header = ({onAdd, mostrarForm}) => {
 
   return (
     <header className="header">
         <h1>Tareas</h1>
-        <Boton texto ="Agregar" color = "green" onClick={agregar} />
+        <Boton texto = { mostrarForm ? 'Cerrar': 'Agregar' } color = { mostrarForm ? 'red': 'green' } onClick={onAdd} />
     </header>
   )
 }

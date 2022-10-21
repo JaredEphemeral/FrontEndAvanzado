@@ -6,6 +6,8 @@ import {useState} from 'react';
 
 function App() {
 
+  const [mostrarForm, setMostrarForm] = useState(false);
+
   const [tareas, setTareas] = useState([
     {
       id: 1,
@@ -39,11 +41,15 @@ function App() {
   }
 
   //Agregar una tarea
+  const agregarTarea = (objt) => {
+    setTareas( tareas => [...tareas, objt] )
+  }
+
 
   return (
     <div className="container">
-      <Header />
-      <AddTarea />
+      <Header onAdd = {() => setMostrarForm( !mostrarForm ) } mostrarForm = {mostrarForm} />
+      {mostrarForm && <AddTarea onAdd = {agregarTarea} />}
      {tareas.length > 0 ? <Tareas tareas={tareas} onDelete ={borrarTarea} onToggle = {toggleTarea} /> : 'No hay tareas para mostrar'}
     </div>
   )

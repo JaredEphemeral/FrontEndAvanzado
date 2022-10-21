@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AddTarea = () => {
+const AddTarea = ({onAdd}) => {
 
     const [texto, setTexto] = useState('');
     const [fecha, setFecha] = useState('');
@@ -17,9 +17,15 @@ const AddTarea = () => {
         if(!fecha){
             alert('No ingreso la fecha')
             return
+        }        
+        const objt = {
+            id: Math.floor(Math.random() * 100000),
+            texto: texto,
+            fecha: fecha,
+            terminada: terminada
         }
 
-        
+        onAdd(objt)
     }
 
     return (
