@@ -1,20 +1,18 @@
-import { useEffect, useState } from 'react'
+import Counter from './Counter'
 import '../styles/App.css'
+import { useState } from 'react'
 
-function App () {
-  const [username, setUserName] = useState('Bruno')
-  const handleChangeName = () => setUserName('Jared')
+export default function App () {
+  const [isView, setIsView] = useState(true)
 
-  useEffect(() => {
-    console.log('First')
-  }, [])
+  const handleView = () => {
+    setIsView(!isView)
+  }
 
   return (
     <div className='App'>
-      <h2>{username}</h2>
-      <button onClick={handleChangeName}>Cambiar</button>
+      {isView && <Counter />}
+      <button onClick={handleView}>Toggle</button>
     </div>
   )
 }
-
-export default App
